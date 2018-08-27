@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include ./navbar%>
+
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+  </head>
+
+  <body>
+      <ul>
+        <tr><td>
+        <img src="<%= database.image_thumb_url %>">
+      </td>
+      <td>
+        <li><%= database.name %></li>
+        <li><%= database.price_in_cents %></li>
+        <li><%= database.limited_time_offer_savings_in_cents %></li>
+        <li><%= database.limited_time_offer_ends_on %></li>
+        <li><%= database.secondary_category %></li>
+        <li><%= database.origin %></li>
+        <li><%= database.package %></li>
+        <li><%= database.producer_name %></li>
+        <li><%= database.released_on %></li>
+        <li><%= database.is_seasonal %></li>
+        <li><%= database.varietal %></li>
+        <li><%= database.style %></li>
+        <li><%= database.tertiary_category %></li>
+      </td>
+      <a href="/" >Back</a>
+      </tr>
+      </ul> 
+  </body>
+</html>
