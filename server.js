@@ -14,8 +14,7 @@ const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
-var cookieSession = require("cookie-session");
-var rp = require('request-promise');
+const cookieSession = require("cookie-session");
 
 app.use(cookieSession({
   name: 'user_id',
@@ -41,89 +40,18 @@ app.use("/styles", sass({
 app.use(express.static("public"));
 
 // Seperated Routes for each Resource
-const users = require("./routes/users");
-const beers = require("./routes/beers");
-const blopinions = require("./routes/blopinions");
+const usersRoutes = require("./routes/users");
+const beersRoutes = require("./routes/beers");
+const blopinionsRoutes = require("./routes/blopinions");
+const indexRoutes = require("./routes/index");
+const detailRoutes = require("./routes/detail");
 
 // Mount all resource routes
-app.use("/api/users", users(knex));
-app.use("/api/beers", beers(knex));
-app.use("/api/blopinions", blopinions(knex));
-
-var lcboApiOptions = '';
-
-var lcboApi = {
-  uri: "https://lcboapi.com/products",
-  qs: {
-    access_key: process.env.API_Key,
-    primary_category:"beer"
-  },
-  headers: {
-      'User-Agent': 'Request-Promise'
-  },
-  json: true // Automatically parses the JSON string in the response
-};
-
-// Home page
-app.get("/", (req, res) => {
-  if (req.session.current_page > 0) {
-    lcboApi.uri = 'https://lcboapi.com/products?page='+req.session.current_page;
-  }
-  rp(lcboApi)
-  .then(function (repos) {
-    const templateVars = {
-      current_page: repos.pager.current_page,
-      first_page: repos.pager.is_first_page,
-      final_page: repos.pager.is_final_page,
-      database: repos.result
-    };
-    req.session.current_page = repos.pager.current_page;
-    console.log(repos);
-    res.render("index",templateVars);
-  });
-});
-
-//next, previous
-app.post("/:page", (req,res) => {
-  console.log(req.params);
-  lcboApi.uri = 'https://lcboapi.com/products?page='+req.params.page;
-  req.session.current_page = req.params.page;
-  res.redirect("/");
-});
-
-app.get("/login", (req, res) => {
-  res.render("login");
-});
-
-app.put("/login", (req, res) => {
-  res.render("index");
-});
-
-app.put("/register", (req, res) => {
-  res.render("index");
-});
-
-app.get("/detail", (req, res) => {
-  res.render("detail");
-});
-
-app.post("/detail/:id", (req, res) => {
-
-  lcboApi.uri = 'https://lcboapi.com/products/'+req.params.id;
-
-  rp(lcboApi)
-  .then(function (repos) {
-    const templateVars = {
-      database: repos.result
-    };
-    console.log(repos);
-    res.render("detail",templateVars);
-  });
-});
-
-app.get("/locate", (req, res) => {
-
-});
+app.use("/api/users", usersRoutes(knex));
+app.use("/api/beers", beersRoutes(knex));
+app.use("/api/blopinions", blopinionsRoutes(knex));
+app.use("/", indexRoutes(knex));
+app.use("/api/details", detailRoutes(knex));
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
