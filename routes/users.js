@@ -7,12 +7,10 @@ const bcrypt = require("bcrypt");
 module.exports = (knex) => {
 
   router.post("/register", (req, res) => {
-    console.log('hi!');
     knex.select('*')
       .from('users')
       .where('email', req.body.email)
       .then(function (results) {
-        console.log(results);
         if (results.length != 0) {
           res.json({ message: 'Error: The user exist!' })
         } else {
@@ -26,8 +24,7 @@ module.exports = (knex) => {
             }])
             .then(function (id) {
               req.session.user_id = id[0];
-              console.log('req session after register', id);
-              res.render("/index");
+              res.redirect("/");
             })
             .catch(function (error) {
               console.error('Error: Inserting the user', error)
@@ -46,6 +43,13 @@ module.exports = (knex) => {
   router.get("/register", (req, res) => {
     res.render("register");
   });
+
+  router.post("/logout", (req, res) => {
+    console.log(req.session);
+    req.session = null;
+    res.redirect("/");
+    console.log(req.session);
+  });
   
   router.post("/login", (req, res) => {
     knex.select('*')
@@ -53,9 +57,8 @@ module.exports = (knex) => {
     .where('email', '=', req.body.email)
     .then(function (results) {
       if (bcrypt.compareSync(req.body.password, results[0].password)) {
-        console.log('results is', results);
         req.session.user_id = results[0].id;
-        res.render("index");
+        res.redirect("/");
       }
     })
     .catch(function (error) {

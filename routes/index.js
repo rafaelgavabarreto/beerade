@@ -31,7 +31,7 @@ module.exports = (knex) => {
         database: repos.result
       };
       req.session.current_page = repos.pager.current_page;
-      console.log(repos);
+      // console.log(repos);
       res.render("index",templateVars);
     });
   });

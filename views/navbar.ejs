@@ -14,16 +14,21 @@
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
   <!-- External JS -->
-  <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
   <script type="text/javascript" src="/vendor/moment.js"></script>
 
   <!-- Top nav bar (fixed) -->
   <nav id="nav-bar">
     <span class="header">Beerade</span>
-    <form>
-      <button href="#" class="login" class="scrollup" type="button"><i class="fas fa-pencil-square-o" aria-hidden="true"></i> Login</button>
-      <button href="#" class="logout" class="scrollup" type="button"><i class="fas fa-pencil-square-o" aria-hidden="true"></i> Logout</button>
+    <form method="GET" action="/api/users/login">
+          <input type="submit" value="Login"/>
     </form>
-    </nav>
+    <form method="GET" action="/api/users/register">
+      <input type="submit" value="Register"/>
+    </form>
+    <form method="POST" action="/api/users/logout">
+      <input type="submit" value="Logout"/>
+    </form>
+  </nav>
 </head>
