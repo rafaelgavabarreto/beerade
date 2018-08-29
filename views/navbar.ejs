@@ -21,14 +21,20 @@
   <!-- Top nav bar (fixed) -->
   <nav id="nav-bar">
     <span class="header">Beerade</span>
+    <% if (username == null) { %>
+      hrllo
     <form method="GET" action="/api/users/login">
-          <input type="submit" value="Login"/>
+      <input type="submit" value="Login"/>
     </form>
     <form method="GET" action="/api/users/register">
       <input type="submit" value="Register"/>
     </form>
-    <form method="POST" action="/api/users/logout">
-      <input type="submit" value="Logout"/>
-    </form>
+    <% } else { %>
+      <%= username %>
+      hi
+      <form method="POST" action="/api/users/logout">
+        <input type="submit" value="Logout"/>
+      </form>
+    <% } %>
   </nav>
 </head>

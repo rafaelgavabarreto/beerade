@@ -29,6 +29,7 @@ module.exports = (knex) => {
     rp(lcboApi)
     .then(function (repos) {
       const templateVars = {
+        username: req.session.username,
         database: repos.result
       };
       console.log(repos);

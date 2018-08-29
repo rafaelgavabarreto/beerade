@@ -24,6 +24,7 @@ module.exports = (knex) => {
             }])
             .then(function (id) {
               req.session.user_id = id[0];
+              req.session.username = req.body.first_name + " " + req.body.last_name;
               res.redirect("/");
             })
             .catch(function (error) {
@@ -37,18 +38,29 @@ module.exports = (knex) => {
   });
 
   router.get("/login", (req, res) => {
-    res.render("login");
+    if (req.session.username === null) {
+      req.session.username = '';
+    }
+    const templateVars = {
+      username: req.session.username
+    };
+
+    res.render("login",templateVars);
   });
   
   router.get("/register", (req, res) => {
-    res.render("register");
+    if (req.session.username == null) {
+      req.session.username = '';
+    }
+    const templateVars = {
+      username: req.session.username
+    };
+    res.render("register",templateVars);
   });
 
   router.post("/logout", (req, res) => {
-    console.log(req.session);
     req.session = null;
     res.redirect("/");
-    console.log(req.session);
   });
   
   router.post("/login", (req, res) => {
@@ -58,6 +70,7 @@ module.exports = (knex) => {
     .then(function (results) {
       if (bcrypt.compareSync(req.body.password, results[0].password)) {
         req.session.user_id = results[0].id;
+        req.session.username = results[0].first_name + " " + results[0].last_name;
         res.redirect("/");
       }
     })

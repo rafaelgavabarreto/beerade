@@ -1,27 +1,24 @@
 Example app listening on port 8080
-[0mGET /api/users/login? [36m304 [0m11.052 ms - -[0m
-[0mGET /vendor/normalize-4.1.1.css [36m304 [0m3.671 ms - -[0m
-[0mGET /vendor/moment.js [33m404 [0m1.725 ms - 155[0m
-[0mGET /styles/layout.css [32m200 [0m11.216 ms - -[0m
-[0mGET /vendor/moment.js [33m404 [0m0.523 ms - 155[0m
-[0mPOST /api/users/login [36m302 [0m88.830 ms - 46[0m
-[90mSQL[39m [36mselect * from "users" where "email" = ?[39m [90m{r@r.com}[39m [35m7.073ms[39m
-[0mGET / [36m304 [0m349.350 ms - -[0m
-[0mGET /vendor/normalize-4.1.1.css [36m304 [0m2.267 ms - -[0m
-[0mGET /vendor/moment.js [33m404 [0m2.717 ms - 155[0m
-[0mGET /vendor/border-box.css [36m304 [0m2.815 ms - -[0m
-[0mGET /scripts/app.js [36m304 [0m3.123 ms - -[0m
-[0mGET /styles/layout.css [32m200 [0m9.293 ms - 66[0m
-[0mGET /vendor/moment.js [33m404 [0m0.377 ms - 155[0m
-[0mGET /api/users [33m404 [0m0.646 ms - 148[0m
-Session { current_page: 1, user_id: 3 }
-null
-[0mPOST /api/users/logout [36m302 [0m3.418 ms - 46[0m
-[0mGET / [36m304 [0m259.127 ms - -[0m
-[0mGET /vendor/normalize-4.1.1.css [36m304 [0m1.847 ms - -[0m
-[0mGET /vendor/moment.js [33m404 [0m1.561 ms - 155[0m
-[0mGET /vendor/border-box.css [36m304 [0m1.664 ms - -[0m
-[0mGET /scripts/app.js [36m304 [0m1.718 ms - -[0m
-[0mGET /styles/layout.css [36m304 [0m3.495 ms - -[0m
-[0mGET /vendor/moment.js [33m404 [0m0.332 ms - 155[0m
-[0mGET /api/users [33m404 [0m0.398 ms - 148[0m
+[0mGET / [32m200 [0m849.035 ms - 15234[0m
+[0mGET /vendor/normalize-4.1.1.css [36m304 [0m4.313 ms - -[0m
+[0mGET /vendor/border-box.css [36m304 [0m3.977 ms - -[0m
+[0mGET /vendor/moment.js [33m404 [0m5.203 ms - 155[0m
+[0mGET /scripts/app.js [36m304 [0m5.551 ms - -[0m
+[0mGET /styles/layout.css [32m200 [0m10.012 ms - -[0m
+[0mGET /vendor/moment.js [33m404 [0m0.333 ms - 155[0m
+[0mGET /api/users [33m404 [0m0.514 ms - 148[0m
+[0mGET /api/users/login? [32m200 [0m1.526 ms - 1822[0m
+[0mGET /vendor/normalize-4.1.1.css [36m304 [0m1.177 ms - -[0m
+[0mGET /vendor/moment.js [33m404 [0m0.853 ms - 155[0m
+[0mGET /styles/layout.css [32m200 [0m4.043 ms - 66[0m
+[0mGET /vendor/moment.js [33m404 [0m0.391 ms - 155[0m
+[0mPOST /api/users/login [36m302 [0m91.413 ms - 46[0m
+[90mSQL[39m [36mselect * from "users" where "email" = ?[39m [90m{r@r.com}[39m [35m6.005ms[39m
+[0mGET / [32m200 [0m287.993 ms - 15150[0m
+[0mGET /vendor/normalize-4.1.1.css [36m304 [0m2.020 ms - -[0m
+[0mGET /vendor/moment.js [33m404 [0m1.738 ms - 155[0m
+[0mGET /vendor/border-box.css [36m304 [0m1.859 ms - -[0m
+[0mGET /scripts/app.js [36m304 [0m2.029 ms - -[0m
+[0mGET /styles/layout.css [36m304 [0m3.764 ms - -[0m
+[0mGET /vendor/moment.js [33m404 [0m0.350 ms - 155[0m
+[0mGET /api/users [33m404 [0m0.388 ms - 148[0m

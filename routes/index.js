@@ -25,6 +25,7 @@ module.exports = (knex) => {
     rp(lcboApi)
     .then(function (repos) {
       const templateVars = {
+        username: req.session.username,
         current_page: repos.pager.current_page,
         first_page: repos.pager.is_first_page,
         final_page: repos.pager.is_final_page,
