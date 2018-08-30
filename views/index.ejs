@@ -43,12 +43,12 @@
         <li><%= database[result].varietal %></li>
         <li><%= database[result].style %></li>
         <li><%= database[result].tertiary_category %></li>
-        <form method="POST" action="/api/details/detail/<%= database[result].id %>">
+        <form method="GET" action="/api/details/detail/<%= database[result].id %>">
           <input type="submit" value="Details"/>
         </form>
       </td>
       </tr>
       </ul> 
-<% } %>
+    <% } %>
   </body>
 </html>

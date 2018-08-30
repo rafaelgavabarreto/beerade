@@ -34,5 +34,26 @@
       <a href="/" >Back</a>
       </tr>
       </ul> 
+      <% for (var result in opinions) { %>
+        <ul>
+        <td>
+
+            <li><%= username %></li>
+            <li><%= opinions[result].rate %></li>
+            <li><%= opinions[result].opinion %></li>
+
+        </td>
+      </ul> 
+      <% } %>
+      <form method="POST" action="/api/details/new_opinion">
+        <div class="form-group">
+          <input type="hidden" name="beer_id" value="<%= database.id %>">
+          <label for="rate" value="rate"/>
+          <p><input id="rate" type="rate" name="rate"></p>
+          <label for="opinion" value="Opinion"/>
+          <p><input id="opinion" type="opinion" name="opinion"></p>
+        </div>
+        <input type="submit" value="Opinion"/>
+      </form>
   </body>
 </html>

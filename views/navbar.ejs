@@ -22,7 +22,6 @@
   <nav id="nav-bar">
     <span class="header">Beerade</span>
     <% if (username == null) { %>
-      hrllo
     <form method="GET" action="/api/users/login">
       <input type="submit" value="Login"/>
     </form>
@@ -31,7 +30,6 @@
     </form>
     <% } else { %>
       <%= username %>
-      hi
       <form method="POST" action="/api/users/logout">
         <input type="submit" value="Logout"/>
       </form>
